@@ -18,6 +18,19 @@ class Dropdown {
     
     // Toggle the ".dropdown-hidden" class off and on
     this.content.classList.toggle('dropdown-hidden');
+    // TweenMax.to('.dropdown-content', 6, {left: 600, 
+    //                                 backgroundColor: 'red',
+    //                                 padding: 20,
+    //                                 borderColor: 'white',
+    //                                 borderRadius: 26});
+
+    // TweenMax.from('.dropdown-content', 6, {x:600, ease:Elastic.easeOut});
+    TweenMax.staggerFrom('.dropdown-link', 0.5, {opacity:0, y:200, rotation:360, scale:2, delay: 0.5}, 0.2);
+    TweenMax.to('.dropdown-content, .dropdown-link', 0.5, {opacity:0, delay:2, onComplete:complete})
+    function complete() {
+      alert('all done :)');
+    }
+
   }
 }
 
