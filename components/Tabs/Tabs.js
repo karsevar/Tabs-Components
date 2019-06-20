@@ -1,3 +1,27 @@
+// TabItem needs to be above TabLink because TabLink is calling TabItem 
+// and class syntax is not hoisted.
+
+class TabItem {
+  constructor(element) {
+    // Assign this.element to the passed in element
+    // this.element;
+    this.element = element;
+  }
+
+  select() {
+    // Select all ".tabs-item" elements from the DOM
+    // const items;
+    const items = document.querySelectorAll('.tabs-item');
+
+    // Remove the class "tabs-item-selected" from each element
+    items.forEach(item => item.classList.remove('tabs-item-selected'))
+    
+    // Add a class named "tabs-item-selected" to this element
+    //this.element;
+    this.element.classList.add('tabs-item-selected')
+  }
+}
+
 
 class TabLink {
   constructor(element) {
@@ -8,9 +32,11 @@ class TabLink {
     // Get the custom data attribute on the Link
     // this.data;
     this.data = this.element.dataset.tab;
-    console.log(this.data);
+    console.log(this.data) // returning back the proper strings (1, 2, 3, 4)
     // Using the custom data attribute get the associated Item element
     // this.itemElement;
+    this.itemElement = document.querySelector(`div.tabs-item[data-tab="${this.data}"]`)
+    console.log(this.itemElement);
     
     // Using the Item element, create a new instance of the TabItem class
     // this.tabItem;
@@ -34,23 +60,6 @@ class TabLink {
   }
 }
 
-class TabItem {
-  constructor(element) {
-    // Assign this.element to the passed in element
-    // this.element;
-  }
-
-  select() {
-    // Select all ".tabs-item" elements from the DOM
-    // const items;
-
-    // Remove the class "tabs-item-selected" from each element
-    
-    // Add a class named "tabs-item-selected" to this element
-    //this.element;
-  }
-}
-
 /* START HERE: 
 
 - Select all classes named ".tabs-link" and assign that value to the links variable
@@ -62,7 +71,6 @@ class TabItem {
 */
 
 links = document.querySelectorAll('.tabs-link');
-console.log(links);
 
 links.forEach(link => new TabLink(link));
 
