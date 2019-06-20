@@ -44,9 +44,9 @@ class TabLink {
     // console.log(this.tabItem) // Output seems to be displaying the proper object configuration.
     
     // Add a click event listener on this instance, calling the select method on click
-    // this.element.addEventListener('click', (event) => {
-    //   this.tabItem.select();
-    // });
+    this.element.addEventListener('click', (event) => {
+      this.tabItem.select();
+    });
 
     this.element.addEventListener('click', this.select.bind(this));
   };
@@ -54,18 +54,18 @@ class TabLink {
   select() {
     // Get all of the elements with the tabs-link class
     // const links;
-    const links = document.querySelectorAll('.tabs-item');
+    const links = document.querySelectorAll('.tabs-link');
 
     // console.log('click fired', this.itemElement); // Event listener works perfectly.
 
     // Using a loop or the forEach method remove the 'tabs-link-selected' class from all of the links
     // Array.from(links).forEach();
-    links.forEach(link => link.classList.remove('tabs-item-selected'));
+    links.forEach(link => link.classList.remove('tabs-link-selected'));
     console.log(links);
 
     // Add a class named "tabs-link-selected" to this link
     // this.element;
-    this.itemElement.classList.add('tabs-item-selected');
+    this.element.classList.add('tabs-link-selected');
     
     // Call the select method on the item associated with this link
 
